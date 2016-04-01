@@ -5,18 +5,18 @@ public class Solution {
 
 	/*
 	 * Use key, stack(value) for the dataBase base Storage, so it can be easily
-	 * unset. Use valCount map to fast retrive the "NUMEQUALTO" operation.
+	 * unset. Use valCount map to fast retrieve the "NUMEQUALTO" operation.
 	 */
 	private Map<String, Deque<String>> dataBase = new HashMap<>();
 	private Map<String, Integer> valCount = new HashMap<>();
 
-	// dbBlock and countBlock are stacks to snapshot orginal value if in
+	// dbBlock and countBlock are stacks to snapshot original value if in
 	// transaction blocks
 	private Deque<Map<String, Deque<String>>> dbBlockStack = new LinkedList<>();
 	private Deque<Map<String, Integer>> countBlockStack = new LinkedList<>();
 
-	// Set function, put key-value pair into data base, snapshot modifed key and
-	// val if in tranaction block
+	// Set function, put key-value pair into data base, snapshot modified key and
+	// val if in transaction block
 	public void set(String key, String val) {
 
 		snapshotDB(key);
@@ -43,7 +43,7 @@ public class Solution {
 		}
 	}
 
-	// get function retrive the value from database
+	// get function retrieve the value from database
 	public String get(String key) {
 		if (dataBase.containsKey(key)) {
 			return dataBase.get(key).peek();
@@ -83,7 +83,7 @@ public class Solution {
 		}
 	}
 
-	// retrive the number of values from valCount store
+	// Retrieve the number of values from valCount store
 	public int numEqualTo(String val) {
 		if (valCount.containsKey(val)) {
 			return valCount.get(val);
@@ -156,7 +156,7 @@ public class Solution {
 			System.out.println("Invalid Command!");
 			return;
 		}
-		switch (strs[0]) {
+		switch (strs[0].toUpperCase()) {
 		case "SET":
 			if (strs.length < 3)
 				break;
@@ -187,7 +187,7 @@ public class Solution {
 	}
 
 	public void execLine(String command) {
-		switch (command) {
+		switch (command.toUpperCase()) {
 		case "BEGIN":
 			dbBlockStack.push(new HashMap<>());
 			countBlockStack.push(new HashMap<>());
@@ -213,7 +213,8 @@ public class Solution {
 
 		while (sc.hasNextLine()) {
 			String command = sc.nextLine();
-			if (command.equals("END"))
+			command = command.trim();
+			if (command.toUpperCase().equals("END"))
 				break;
 			solution.execLine(command);
 		}
