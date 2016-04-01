@@ -11,21 +11,21 @@ e.g.
 SET a 10 	
 SET b 10
 NUMEQUALSTO 10
->>> 2
+> 2
 GET a
->>> 10
+> 10
 SET a 20
 GET a
->>> 20
+> 20
 GET b
->>> 10
+> 10
 NUMEQUALSTO 10
->>> 1
+> 1
 NUMEQUALSTO 20
->>> 1
+> 1
 UNSET a
 GET a
->>> 10
+> 10
 
 It also support transactions
 
@@ -39,19 +39,19 @@ e.g.
 BEGIN
 SET a 10
 GET a
->>> 10
+> 10
 BEGIN
 SET a 20
 GET a
->>> 20
+> 20
 ROLLBACK
 GET a
->>> 10
+> 10
 COMMIT
 GET a
->>> 10
+> 10
 ROLLBACK
->>> NO TRANSACTION
+> NO TRANSACTION
 
 
 
