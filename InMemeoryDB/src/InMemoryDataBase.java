@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class InMemoryDataBase {
 
 	/*
 	 * Use key, stack(value) for the dataBase base Storage, so it can be easily
@@ -209,7 +209,7 @@ public class Solution {
 		 * Enter your code here. Read input from STDIN. Print output to STDOUT
 		 */
 		Scanner sc = new Scanner(System.in);
-		Solution solution = new Solution();
+		InMemoryDataBase solution = new InMemoryDataBase();
 
 		while (sc.hasNextLine()) {
 			String command = sc.nextLine();
